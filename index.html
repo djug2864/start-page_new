@@ -52,5 +52,14 @@
 		<!-- ショートカット　--> 
 	<br>
 		<center> <a href= "how_to.html" >使い方</a> <a href= "contact.html" >問い合わせ</a>  <a href= "https://djug-links.blogspot.com" >開発者のページ</a> <a href= "special-thanks.html" >Special Thanks</a></center> 
-					</body>
+			<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').then(registration => {
+      console.log('ServiceWorker registration successful.');
+    }).catch(err => {
+      console.log('ServiceWorker registration failed.');
+    });
+  }
+</script>		
+	</body>
 </html>
