@@ -15,6 +15,12 @@
     <link rel="icon" href="img/search-f.png">
 </head>
 <body>
+	<!--Cookie同意-->
+	<div class="cookie-consent">
+  <div class="cookie-text">当サイトではCookieを使用します。Cookieの使用に関する詳細は「<a href="#privacy-policy">プライバシーポリシー</a>」をご覧ください。</div>
+  <div class="cookie-agree">OK</div>
+</div>
+	<!--Cookie同意-->
 	<script type="text/javascript" src="js/gaibu.js"></script>
 	<body background="back.webp">
 		<!-- Google  -->
@@ -58,4 +64,101 @@
 <script>
   new Darkmode().showWidget();
 </script>
-
+	<script type='text/javascript'>
+(function() {
+  const expire = 30; // 有効期限（日）
+  let cc = document.querySelector('.cookie-consent');
+  let ca = document.querySelector('.cookie-agree');
+  const flag = localStorage.getItem('popupFlag');
+  if (flag != null) {
+    const data = JSON.parse(flag);
+    if (data['value'] == 'true') {
+      popup();
+    } else {
+      const current = new Date();
+      if (current.getTime() > data['expire']) {
+        setWithExpiry('popupFlag', 'true', expire);
+        popup();
+      }      
+    }
+  } else {
+    setWithExpiry('popupFlag', 'true', expire);
+    popup();
+  }
+  ca.addEventListener('click', () => {
+    cc.classList.add('cc-hide1');
+    setWithExpiry('popupFlag', 'false', expire);
+  });
+  
+  function setWithExpiry(key, value, expire) {
+    const current = new Date();
+    expire = current.getTime() + expire * 24 * 3600 * 1000;
+    const item = {
+      value: value,
+      expire: expire
+    };
+    localStorage.setItem(key, JSON.stringify(item));
+  }
+  
+  function popup() {
+    cc.classList.add('is-show');
+  }
+}());
+</script>
+<style>
+  .cookie-consent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 12px;
+    color: #fff;
+    background: rgba(0,0,0,.7);
+    padding: 1.2em;
+    box-sizing: border-box;
+    visibility: hidden;
+  }
+  .cookie-consent.is-show {
+    visibility: visible;
+  }
+  .cookie-consent a {
+    color: #fff !important;
+  }
+  .cookie-agree {
+    color: #fff;
+    background: dodgerblue;
+    padding: .5em 1.5em;
+  }
+  .cookie-agree:hover {
+    cursor: pointer;
+  }
+  /* パッと消える */
+  .cc-hide1 {
+    display: none;
+  }
+  /* ゆっくり消える */
+  .cc-hide2 {
+    animation: hide 1s linear 0s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes hide {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  /* メディアクエリ */
+  @media screen and (max-width: 600px) {
+    .cookie-consent {
+      flex-direction: column;
+    }
+    .cookie-text {
+      margin-bottom: 1em;
+    }
+  }
+</style>
