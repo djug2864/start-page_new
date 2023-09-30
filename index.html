@@ -51,6 +51,20 @@
 		<div class="ticker-wrap">
 <!-- Google -->
 	<br>
+			<!--お知らせ-->
+<div class="ticker-wrap">
+  <div class="ticker-head">NEWS</div>
+  <div class="ticker">
+    <ul>
+      <li class='ticker-item'><span class="2023/10/1"></span><span class="お知らせティッカーを設置しました。今後も開発を続けていきますのでよろしくお願いします。"></span></a></li>
+      <li class='ticker-item'><span class="ticker-date"></span><span class="ticker-title"></span></a></li>
+      <li class='ticker-item'><span class="ticker-date"></span><span class="ticker-title"></span></a></li>
+      <li class='ticker-item'><span class="ticker-date"></span><span class="ticker-title"></span></a></li>
+      <li class='ticker-item'><span class="ticker-date"></span><span class="ticker-title"></span></a></li>
+    </ul>
+  </div>
+</div>
+			<!--お知らせ-->
 		<br>
 	<!-- ショートカット　--> 
 	<a href="google/index.html">
@@ -63,9 +77,12 @@
 		<center> <a href= "how_to.html" >使い方</a> <a href= "contact.html" >問い合わせ</a>  <a href= "about/privacy.html" >プライバシーポリシー</a> <a href= "https://djug-links.blogspot.com" >開発者のページ</a> <a href= "special-thanks.html" >Special Thanks</a></center> 
 					</body>
 	<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-<script>
+<!--Script-->
+	<!--ダークモードjs-->
+	<script>
   new Darkmode().showWidget();
 </script>
+	<!--Cookie同意ポップアップ-->
 	<script type='text/javascript'>
 (function() {
   const expire = 30; // 有効期限（日）
@@ -107,7 +124,86 @@
   }
 }());
 </script>
-<style>
+	<!--お知らせ-->
+	<script type="text/javascript">
+(function(window, document) {
+  const animTime = 5000; // アニメーション時間(ms)
+  const speed = 100; // テキストの移動速度(px)
+  const limit = 0; // ブレークポイント(px)
+  let animId;
+  let isRunning = false;
+
+  const ticker = document.querySelector('.ticker');
+  loadTicker();
+
+  function loadTicker() {
+    tickerAnim();
+    animId = setInterval(tickerAnim, animTime);
+    isRunning = true;
+  }
+
+  // アニメーション処理
+  function tickerAnim() {
+    const items = ticker.querySelectorAll('.ticker-item');
+    const running = ticker.querySelector('.run');
+    let idx, link, first, next;
+    if (!running) { // 実行中の要素がない場合（初回のみ）
+      first = items[0];
+      link = first.querySelector('a');
+      first.classList.add('fadeInDown', 'run');
+      first.style.zIndex = 1;
+      setTimeout(textMove, 1000, link); // 第3引数に引数linkを指定。こうしないと即実行されてしまうので注意。
+    } else {
+      for (let i = 0; i < items.length; i++) {
+        if (items[i] == running) {
+          idx = i; // 実行中要素のインデックスを取得
+          break;
+        }
+      }
+      next = items[(idx + 1) % items.length];
+      running.classList.replace('fadeInDown', 'fadeOutDown');
+      setTimeout(() => {
+        running.classList.remove('fadeOutDown', 'run');
+        running.style.zIndex = 0;
+        link = running.querySelector('a');
+        link.style.transform = 'none';
+        next.classList.add('fadeInDown', 'run');
+        next.style.zIndex = 1;
+        link = next.querySelector('a');
+        setTimeout(textMove, 1000, link);
+      }, 300);
+    }
+  }
+
+  // テキスト移動処理
+  function textMove(elm) {
+    const move = elm.parentNode.clientWidth - elm.clientWidth;
+    if (move < 0) {
+      elm.style.transform = 'translateX(' + move + 'px)';
+      elm.style.transitionDuration = Math.abs(move) / speed + 's';
+    }
+  }
+
+  // ウィンドウサイズ変更時
+  window.addEventListener('resize', () => {
+    const windowWidth = window.innerWidth;
+    if (windowWidth <= limit) {
+      ticker.style.display = 'none';
+      clearInterval(animId);
+      isRunning = false;
+    } else {
+      if (!isRunning) {
+        ticker.style.display = 'block';
+        animId = setInterval(tickerAnim, animTime);
+        isRunning = true;
+      }
+    }
+  });
+})(window, document);
+</script>
+<!--Style-->
+	<!--Cookie同意ポップアップ-->
+	<style>
   .cookie-consent {
     display: flex;
     justify-content: space-between;
@@ -163,4 +259,104 @@
       margin-bottom: 1em;
     }
   }
+		/*お知らせ*/
+		<style>
+.ticker-wrap {
+  display: flex;
+  width: 100%;
+  background: #000;
+  padding: 4px;
+}
+.ticker-head {
+  width: calc(4em + 8px);
+  font-style: italic;
+  color: dodgerblue;
+  line-height: 30px;
+  padding: 0 4px;
+}
+.ticker {
+  width: 100%;
+  height: 30px;
+  font-size: 15px;
+  background: #fff;
+  line-height: 30px;
+  padding: 0 6px;
+  overflow: hidden;
+}
+.ticker ul {
+  position: relative;
+  list-style: none;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.ticker-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-right: 0;
+  opacity: 0;
+}
+.ticker-item a {
+  display: inline-block;
+  width: auto;
+  color: #333;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: transform 5s linear;
+}
+.ticker-date {
+  font-weight: bold;
+}
+.ticker-title {
+  margin-left: 10px;
+}
+.ticker-new {
+  color: red;
+  margin-left: 10px;
+  animation: blink 1s ease-in-out infinite alternate;
+}
+.fadeInDown {
+  opacity: 0;
+}
+.fadeInDown.run {
+  animation: fadeInDown 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+.fadeOutDown {
+  opacity: 1;
+}
+.fadeOutDown.run {
+  animation: fadeOutDown 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeOutDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+</style>
 </style>
