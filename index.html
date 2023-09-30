@@ -26,11 +26,11 @@
 	<script type="text/javascript" src="js/gaibu.js"></script>
 	<body background="back.webp">
 		<!-- Google  -->
-<form action='https://www.google.com/search' target='_top'>
-<div class='search-input'>
-<input aria-label='Googleで検索' autocomplete='off' name='q' placeholder='Googleで検索' value=''/>
-</div>
-<input class='search-action' type='submit' value='検索'/>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<form method="get" action="https://google.com/search" class="search_container">
+  <input type="text" size="25" placeholder="Googleで検索">
+  <input type="submit" value="&#xf002">
 </form>
 		<div class="ticker-wrap">
 <!-- Google -->
@@ -153,45 +153,34 @@
     }
   }
 		<!--検索バー-->
-		.widget-content form {
+		.search_container{
   position: relative;
-  max-width: 600px;
-  margin: 0 auto;
-}
-.search-input input {
   box-sizing: border-box;
-  background: var(--dark-bg);
-  color: var(--color);
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border: 2px solid #3879D9;
+  padding: 3px 10px;
+  border-radius: 3px;
+  height: 2.3em;
+  width: 265px;
+  overflow: hidden;
+}
+.search_container input[type="text"]{
   border: none;
-  width: calc(100% - 70px);
-  height: 40px;
-  padding: 0 .5em;
+  height: 2.0em;
 }
-.search-input input:focus {
-  outline: none;
-  border: 1px solid var(--brand);
-  padding: 0 calc(.5em - 1px);
+.search_container input[type="text"]:focus {
+  outline: 0;
 }
-.search-input input::placeholder {
-  color: var(--dark-color);
-}
-.search-action {
-  position: absolute;
-  background: var(--brand);
-  color: var(--brand-font);
-  border: none;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  top: 0;
-  right: 0;
-  width: 70px;
-  height: 40px;
-}
-.search-action:hover {
+.search_container input[type="submit"]{
   cursor: pointer;
-  opacity: .8;
+  font-family: FontAwesome;
+  border: none;
+  background: #3879D9;
+  color: #fff;
+  position: absolute;
+  width: 3.5em;
+  height: 3.0em;
+  right:0px;
+  top: -5px;
+  outline : none;
 }
-
 </style>
