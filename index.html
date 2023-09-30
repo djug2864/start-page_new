@@ -28,7 +28,7 @@
 		<!-- Google  -->
 <form action='https://www.google.com/search' target='_top'>
 <div class='search-input'>
-<input aria-label='Googleで検索' autocomplete='off' name='q' placeholder='このブログを検索' value=''/>
+<input aria-label='Googleで検索' autocomplete='off' name='q' placeholder='Googleで検索' value=''/>
 </div>
 <input class='search-action' type='submit' value='検索'/>
 </form>
@@ -152,4 +152,46 @@
       margin-bottom: 1em;
     }
   }
+		<!--検索バー-->
+		.widget-content form {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.search-input input {
+  box-sizing: border-box;
+  background: var(--dark-bg);
+  color: var(--color);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: none;
+  width: calc(100% - 70px);
+  height: 40px;
+  padding: 0 .5em;
+}
+.search-input input:focus {
+  outline: none;
+  border: 1px solid var(--brand);
+  padding: 0 calc(.5em - 1px);
+}
+.search-input input::placeholder {
+  color: var(--dark-color);
+}
+.search-action {
+  position: absolute;
+  background: var(--brand);
+  color: var(--brand-font);
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 40px;
+}
+.search-action:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+
 </style>
