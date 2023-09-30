@@ -7,7 +7,7 @@
   "start_url": "index.html",
   "icons": [
     {
-      "src": "./img/search-f.png",
+      "src": "./img/search-pwa.png",
       "sizes": "192x192",
       "type": "image/png"
     }
