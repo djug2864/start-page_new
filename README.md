@@ -1,4 +1,4 @@
-# start-page
+# about start page
 A simplified browser start page
 # Usage
 https://djug2864.github.io/start-page/how-to.html
