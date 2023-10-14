@@ -1,8 +1,8 @@
 {
   "name": "Start Page",
   "short_name": "Search",
-  "theme_color": "#2196f3",
-  "background_color": "#2196f3",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
   "display": "standalone",
   "start_url": "index.html",
   "icons": [
