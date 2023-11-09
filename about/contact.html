@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <center> <h1>フィードバック</h1>  </center>
+		<p>バグや機能提案等、開発者に伝えたいことをお知らせください。<p>  
+		<form action="https://docs.google.com/forms/d/e/1FAIpQLSd_P-o9Uw6aR1SJDc3dN2kXr7iaMgSYfyE4NNjkA8_1aGiLEA/formResponse" id="form" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+
+<textarea id="msg" name="entry.1531437770" placeholder="フィードバック内容" required="required"></textarea>
+
+<div style="text-align:center">
+<input id="button" name="button" type="submit" value="送 信" />
+</div>
+</form>
+
+<script type="text/javascript">var submitted = false;</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){window.location='thanks-you.html';}"></iframe>
+					
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+	<script>
+  new Darkmode().showWidget();
+</script>
+</body>
+					<style>
+						#form ::placeholder {
+    color: #ccc;
+}
+#button {
+    border: none;
+    border-radius : 3px;
+    font-size: 1.1em;
+    padding: .3em 2em;
+    margin-top: 2em;
+    background: #76C6AB;
+    color: #fff;
+    transition: .2s ease-in-out;
+    -webkit-appearance: none;
+  }
+#button:hover {
+    box-shadow: 1px 1px 10px #fff;
+    cursor: pointer;
+    opacity:0.8;
+}
+#button:active {
+    box-shadow: none;
+}
+#name,
+#email,
+#msg {
+    padding: .5em;
+    border: none;
+    border-radius: 3px;
+    background: #F5F5F5;
+    font-size: 1em;
+    max-width: 100%;
+    width: 100%;
+    color: #454545;
+}
+#name, #email {
+    height: 2.5em;
+}
+#msg {
+    min-height: 250px;
+    min-width: 100%;
+}
+.radio > label {
+    margin: 14px;
+    cursor: pointer;
+}
+.label {
+    padding: 1em 0 5px;
+    font-weight: bold;
+}
+
+						</style> 
+</html>
