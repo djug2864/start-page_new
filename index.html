@@ -149,6 +149,33 @@ body {
   cursor: pointer;
   color: #ffffff;
 }
+/* フォーム全体を画面いっぱいに広げる */
+.gsc-search-box {
+  position: fixed; /* 絶対配置にする */
+  top: 0; /* 上部を固定 */
+  left: 0; /* 左側を固定 */
+  width: 100vw; /* 横幅を画面幅100% */
+  height: 100vh; /* 縦幅を画面高100% */
+  z-index: 100; /* 重なり順を一番上に */
+}
+
+/* 入力欄の幅を調整 */
+.gsc-input {
+  width: calc(100% - 120px); /* 入力欄の幅を計算で設定 */
+}
+
+/* 検索ボタンの位置を調整 */
+.gsc-search-button {
+  position: absolute; /* 絶対配置にする */
+  top: 50%; /* 垂直方向に中央揃え */
+  transform: translateY(-50%); /* 垂直方向に中央揃え */
+  right: 20px; /* 右側に20pxの余白 */
+}
+/* フォーム全体の上下のパディング */
+.gsc-search-box {
+  padding: 10px; /* 上下の余白を10px (約1cm) に設定 */
+}
+
 
 	<!--Cookie同意ポップアップ-->
 	<style>
