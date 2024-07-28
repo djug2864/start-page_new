@@ -8,12 +8,34 @@
 </head>
 <body>
 	<h2>全体の操作動画</h2>
-<video controls src="video/how-to.mp4"></video>
-	<h2>アプリのインストール（PWA)</h2>
-	<video controls src="video/app-install.mp4"></video>
+<div class="video-container">
+  <video controls src="video/how-to.mp4"></video>
+</div>
+<h2>アプリのインストール（PWA)</h2>
+<div class="video-container">
+  <video controls src="video/app-install.mp4"></video>
+</div>
 			
 			</p>  
-		
+		<style>
+  .video-container {
+    position: relative; /* 動画を相対的に配置 */
+    width: 100%; /* 画面いっぱいに広げる */
+    padding-bottom: 56.25%; /* 16:9のアスペクト比を維持 */
+  }
+
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .video-container:hover video {
+    cursor: pointer; /* マウスオーバー時にカーソルを変更 */
+  }
+		</style>
 					</body>
 </html>
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
