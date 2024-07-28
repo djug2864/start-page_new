@@ -57,3 +57,19 @@ body {
 .gsc-search-box {
   padding: 10px; /* 上下の余白を10px (約1cm) に設定 */
 }
+<!--ボトムバー-->
+footer {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 20px;
+}
+
+footer nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+footer nav li {
+  margin: 0 10px;
+}
