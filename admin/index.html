@@ -31,13 +31,35 @@ function logout() {
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 <script>
   new Darkmode().showWidget();
-	let password = prompt("パスワードを入力してください");
+	function checkPassword() {
+  let passwordInput = document.getElementById("password");
+  let password = passwordInput.value;
 
-if (password === "Duvt7SnMWap9u1") {
-  // パスワードが一致した場合の処理
-  alert("認証成功");
-} else {
-  // パスワードが一致しない場合の処理
-  alert("認証失敗");
-}
+  // サーバーサイドでパスワードを検証する処理を呼び出す
+  // (例: fetchを使ってサーバーにリクエストを送信)
+  fetch('/check_password', {
+    method: 'POST',
+    body: JSON.stringify({ password: Duvt7SnMWap9u1 })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // 認証成功時の処理
+      alert("認証成功");
+      // 認証成功後に別のページに遷移するなど
+      window.location.href = "dashboard.html";
+    } else {
+      // 認証失敗時の処理
+      alert("認証失敗");
+      // index.htmlにリダイレクト
+      window.location.href = "index.html";
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    // エラーが発生した場合の処理
+    alert("エラーが発生しました。");
+    window.location.href = "index.html";
+  });
+	}
 </script>
