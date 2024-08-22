@@ -16,6 +16,16 @@
 <li><a href= "special-thanks.html" >Special Thanks</a></li>
 <li><a href= "how-to.html" >使い方</a></li>
 <li><a href= "q-and-a.html" >よくある質問</a></li>
+		<button onclick="logout()">ログアウト</button>
+<script>
+function logout() {
+  // ローカルストレージから認証情報を削除
+  localStorage.removeItem('isAuthenticated');
+
+  // index.htmlにリダイレクト
+  window.location.href = 'index.html';
+}
+</script>
 					</body>
 </html>
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
