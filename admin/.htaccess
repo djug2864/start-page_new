@@ -1,0 +1,5 @@
+username:747c7dd234aff3965696e33cddf1929bf656a90e4adf8bb6f67ba29969a3f288
+AuthType Basic
+AuthName "認証が必要です"  # 認証画面に表示されるタイトル
+AuthUserFile /path/to/.htpasswd  # .htpasswdファイルのパス
+Require valid-user
