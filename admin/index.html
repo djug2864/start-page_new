@@ -32,6 +32,15 @@ function logout() {
 <script>
   new Darkmode().showWidget();
 	// パスワード認証
+	let password = prompt("パスワードを入力してください");
+
+if (password === "Duvt7SnMWap9u1) {
+  // パスワードが一致した場合の処理
+  alert("認証成功");
+} else {
+  // パスワードが一致しない場合の処理
+  alert("認証失敗");
+		}
 	function checkPassword() {
   let passwordInput = document.getElementById("password");
   let password = passwordInput.value;
