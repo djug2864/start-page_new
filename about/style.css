@@ -14,3 +14,12 @@ body {
   background-color: var(--background-color);
   color: var(--primary-color);
 }
+a:link {
+  color: #007bff; /* 通常時のリンクの色 */
+}
+
+@media (prefers-color-scheme: dark) {
+  a:link {
+    color: #fff; /* ダークモード時のリンクの色 */
+  }
+}
