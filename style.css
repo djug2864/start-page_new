@@ -61,7 +61,7 @@ body {
   --primary-color: #333; /* ダークモード時のメインカラー */
   --background-color: #f0f0f0; /* ダークモード時の背景色 */
 }
-
+/*ダークモード・ライトモード*/
 @media (prefers-color-scheme: dark) {
   :root {
     --primary-color: #fff; /* ライトモード時のメインカラー */
@@ -72,4 +72,13 @@ body {
 body {
   background-color: var(--background-color);
   color: var(--primary-color);
+}
+a:link {
+  color: #007bff; /* 通常時のリンクの色 */
+}
+
+@media (prefers-color-scheme: dark) {
+  a:link {
+    color: #fff; /* ダークモード時のリンクの色 */
+  }
 }
