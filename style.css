@@ -57,3 +57,19 @@ body {
 .gsc-search-box {
   padding: 10px; /* 上下の余白を10px (約1cm) に設定 */
 }
+:root {
+  --primary-color: #333; /* ダークモード時のメインカラー */
+  --background-color: #f0f0f0; /* ダークモード時の背景色 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #fff; /* ライトモード時のメインカラー */
+    --background-color: #222; /* ライトモード時の背景色 */
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
