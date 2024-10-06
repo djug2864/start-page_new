@@ -100,3 +100,14 @@ a:hover {
   background-color: #e0e0e0;
 }
 }
+body {
+  animation: fadeIn .5s linear;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
