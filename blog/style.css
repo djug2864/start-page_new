@@ -26,3 +26,14 @@ a:link {
 a:visited {
   color: inherit; /* または、リンクのデフォルトの色にしたい色を指定 */
 }
+body {
+  animation: fadeIn .5s linear;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
