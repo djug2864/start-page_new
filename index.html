@@ -51,11 +51,9 @@
 <a href="microsoft/">
     <img src="img/Microsoft-app.png" alt="Microsoftフォルダ" width="140" height="140">
 </a>
-<a href="about/share.html">
-    <img src="img/share.png" alt="シェア" width="140" height="140">
 		<!-- ショートカット　--> 
 	<br>
-		
+		<center><button onclick="share()">このページを共有</button></center>
 			<center> <a href= "about/" >ABOUT</a> <a href= "blog/" >更新情報</a> <a href= "https://djug2864.github.io" >開発者のページ</a></center>
 <center><select name="select" id="lang-select" onChange="location.href=value;">
   <option disabled selected>Language</option>
@@ -66,3 +64,18 @@
 </body>
 	<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 <!--Script-->
+ <script>
+    function share() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'スタートページ',
+          text: 'ネット回線が悪くても速いよ！！',
+          url: window.location.href
+        })
+        .then(() => console.log('共有成功'))
+        .catch((error) => console.error('共有失敗', error));
+      } else {
+        alert('このブラウザは共有機能に対応していません');
+      }
+    }
+	</script>
