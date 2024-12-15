@@ -7,21 +7,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <!--OGP-->
 	<meta property="og:type" content="website"> <meta property="og:url" content="https://djug2864.github.io/start-page_new">
-  <meta property="og:title" content="Start Page">
+  <meta property="og:title" content="【BETA】Start Page">
   <meta property="og:description" content="ネット環境が悪くてもすぐ表示されるシンプルなスタートページ">
   <meta property="og:image" content="https://djug2864.github.io/start-page_new/img/search-f.png">
   <!--OGP-->
-	<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-F2ZR59Q3P1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-F2ZR59Q3P1');
-</script>
     <meta charset="UTF-8">
-    <title> スタートページ </title>
+    <title> 【BETA】スタートページ </title>
     <link rel="icon" href="img/search-f.png">
 </head>
 <body>
@@ -45,15 +36,15 @@
 	<br>
 		<br>
 	<!-- ショートカット　--> 
-	<a href="google/">
-    <img src="img/google-group.png" alt="Googleフォルダ" width="140" height="140">
+	<a href="https://djug2864.github.io/start-page_new/google/">
+    <img src="https://djug2864.github.io/start-page_new/img/google-group.png" alt="Googleフォルダ" width="140" height="140">
 </a>
-<a href="microsoft/">
-    <img src="img/Microsoft-app.png" alt="Microsoftフォルダ" width="140" height="140">
+<a href="https://djug2864.github.io/start-page_new/microsoft/">
+    <img src="https://djug2864.github.io/start-page_new/img/Microsoft-app.png" alt="Microsoftフォルダ" width="140" height="140">
 </a>
 		<!-- ショートカット　--> 
 	<br>
-			<center> <a href= "about/" >ABOUT</a> <a href= "blog/" >更新情報</a> <a href= "https://djug2864.github.io" >開発者のページ</a></center>
+			<center><a href= "blog/" >更新情報</a></center>
 <center><select name="select" id="lang-select" onChange="location.href=value;">
   <option disabled selected>Language</option>
   <option value="https://djug2864-github-io.translate.goog/start-page_new/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hto=wapp">English</option>
@@ -64,10 +55,11 @@
 	<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 <!--Script-->
  <script>
+	 alert('このページは通常のと違い、実験用のサイトとなっており今後、メインの方にも導入される可能性があるカスタマイズをしています。');
     function share() {
       if (navigator.share) {
         navigator.share({
-          title: 'スタートページ',
+          title: '【BETA】スタートページ',
           text: 'ネット回線が悪くても速いよ！！',
           url: window.location.href
         })
