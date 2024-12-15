@@ -129,3 +129,28 @@ body {
   border-color: #999;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
+// ドックバー
+.dock {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.dock ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.dock li {
+    margin: 0 10px;
+}
+
+.dock a {
+    text-decoration: none;
+    color: #333;
+}
