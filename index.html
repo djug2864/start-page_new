@@ -54,6 +54,13 @@
 		<!-- ショートカット　--> 
 	<br>
 			<center> <a href= "about/" >ABOUT</a> <a href= "blog/" >更新情報</a> <a href= "https://djug2864.github.io" >開発者のページ</a></center>
+			<nav class="dock">
+        <ul>
+            <li><a href="about/">ABOUT</a></li>
+            <li><a href="blog/">更新情報</a></li>
+            <li><a href="https://djug2864.github.io">開発者のページ</a></li>
+        </ul>
+			</nav>
 <center><select name="select" id="lang-select" onChange="location.href=value;">
   <option disabled selected>Language</option>
   <option value="https://djug2864-github-io.translate.goog/start-page_new/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hto=wapp">English</option>
@@ -77,4 +84,15 @@
         alert('このブラウザは共有機能に対応していません');
       }
     }
+	 const dockItems = document.querySelectorAll('.dock li');
+
+dockItems.forEach(item => {
+    item.addEventListener('mouseover', () => {
+        item.style.backgroundColor = '#e0e0e0';
+    });
+
+    item.addEventListener('mouseout', () => {
+        item.style.backgroundColor = '';
+    });
+});
 	</script>
