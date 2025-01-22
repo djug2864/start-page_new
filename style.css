@@ -1,3 +1,9 @@
+.yuji-syuku-regular {
+  font-family: "Yuji Syuku", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 <!--Google風の検索ボックス-->
 	<Style>/* フォント設定 */
 body {
