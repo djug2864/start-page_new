@@ -131,3 +131,25 @@ body {
   border-color: #999;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
+/*ボトムバー*/
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--primary-color); /* テーマカラー */
+  color: var(--on-primary-color); /* テーマカラーに対するコントラストカラー */
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.2);
+  padding: 20px 0;
+  border-radius: 16px 16px 0 0;
+}
+
+.bottom-nav ul {
+  display: flex;
+  justify-content: space-around; /* アイテムを均等に配置 */
+}
+
+.bottom-nav li {
+  flex-grow: 1; /* アイテムが空いているスペースを均等に占める */
+  text-align: center;
+}
