@@ -4,15 +4,45 @@
   font-style: normal;
 }
 
-/*検索*/
+<!--Google風の検索ボックス-->
 .gsc-search-box {
-  padding: 10px; /* 上下の余白を10px (約1cm) に設定 */
+  display: flex;
+  width: 300px;
+  border-radius: 8px;
+  overflow: hidden;
 }
-:root {
-  --primary-color: #333; /* ダークモード時のメインカラー */
-  --background-color: #f0f0f0; /* ダークモード時の背景色 */
+
+.gsc-input-group {
+    display: flex;
+    width: 100%;
 }
-/*ダークモード・ライトモード*/
+
+.gsc-input {
+  flex-grow: 1;
+  padding: 8px;
+  border: none;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.gsc-search-button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.gsc-search-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* 必要に応じてレスポンシブデザインを追加 */
+@media (max-width: 400px) {
+  .gsc-search-box {
+    width: 90%;
+  }
+}/*ダークモード・ライトモード*/
 @media (prefers-color-scheme: dark) {
   :root {
     --primary-color: #fff; /* ライトモード時のメインカラー */
@@ -62,20 +92,166 @@ body {
     opacity: 1;
   }
 }
-#lang-select {
+#select {
   font-family: Arial, sans-serif;
   font-size: 16px;
   padding: 8px 16px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 20px; /* 左右を丸くする */
   background-color: #fff;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   -webkit-appearance: none; /* Safari用 */
+}
+
+#lang-select::-ms-expand {
+  display: none; /* IE用 */
 }
 #lang-select:hover {
   border-color: #999;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
+/*ショートカット*/
+#add-shortcut {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px; /* 左右を丸くする */
+  background-color: #87cefa;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  -webkit-appearance: none; /* Safari用 */
+}
+
+#shortcuts-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shortcut {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+border-radius: 30px; /* 角の丸め具合を調整 */
+}
+
+.shortcut img {
+    width: 50px;
+    height: 50px;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    /* ... (既存のスタイル) ... */
+    border-radius: 10px; /* 角の丸め具合を調整 */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    position: relative; /* close button を配置するために必要 */
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content button {
+    width: 80px; /* 幅を調整 */
+    height: 40px; /* 高さを調整 */
+    margin: 5px; /* ボタン間の間隔を調整 */
+    font-size: 16px; /* フォントサイズを調整 */
+    border-radius: 20px; /* 左右を丸める */
+    padding: 10px 20px; /* 左右のpaddingを調整 */
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 影を追加 */
+    cursor: pointer; /* カーソルを指に変更 */
+}
+/* ... (既存のスタイル) ... */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    position: relative; /* close button を配置するために必要 */
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#image-preview {
+    width: 50px;
+    height: 50px;
+    border: 1px solid gray;
+    margin-top: 5px;
+}
+
+#image-preview img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.shortcut {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.shortcut img {
+    width: 50px;
+    height: 50px;
+}
+
 /*ボトムバー*/
 .bottom-nav {
   position: fixed;
