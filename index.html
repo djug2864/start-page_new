@@ -26,32 +26,32 @@
 </head>
 <body>
 		<!-- Google Search Box -->
-<img src="https://www.google.com/logos/Logo_40wht.gif" border="0" alt="Google" align="absmiddle"></a> <form action='https://www.google.com/search?q=' class='gsc-search-box' target='_top'>
-<table cellpadding='0' cellspacing='0' class='gsc-search-box'>
-<tbody>
-<tr>
-<td class='gsc-input'>
-<input autocomplete='off' class='gsc-input' name='q' size='10' title='search' type='text' value=''/>
-</td>
-<td class='gsc-search-button'>
-<input class='gsc-search-button' title='search' type='submit' value='検索'/>
-</td>
-</tr>
-</tbody>
-</table>
-</form>
-		<div class="ticker-wrap">
-<!-- Google Search Box -->
+<form id="searchForm" class="gsc-search-box" role="search" action="https://www.google.com/search" method="GET">
+  <div class="gsc-input-group">
+    <input type="text" id="searchInput" name="q" class="gsc-input" placeholder="Googleで検索" aria-label="検索キーワード" autocomplete="off">
+    <button type="submit" class="gsc-search-button">検索</button>
+  </div>
+</form><!-- Google Search Box -->
 	<br>
 		<br>
 	<!-- ショートカット　--> 
-	<a href="google/">
-    <img src="img/google-group.png" alt="Googleフォルダ" width="140" height="140">
-</a>
-<a href="microsoft/">
-    <img src="img/Microsoft-app.png" alt="Microsoftフォルダ" width="140" height="140">
-</a>
-		<!-- ショートカット　--> 
+ <div id="shortcuts-container">
+    </div>
+    <button id="add-shortcut">ショートカットを追加</button>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Add/Edit Shortcut</h2>
+            <input type="text" id="shortcut-name" placeholder="タイトル"><br>
+            <input type="text" id="shortcut-url" placeholder="URL"><br>
+            <div id="image-preview"></div>
+            <button id="save-shortcut">保存</button>
+            <button id="delete-shortcut">削除</button>
+            <button id="cancel-shortcut">閉じる</button>
+        </div>
+    </div>
+</html>		<!-- ショートカット　--> 
 	<br>
 			<nav class="bottom-nav">
   <ul>
@@ -83,4 +83,137 @@
         alert('このブラウザは共有機能に対応していません');
       }
     }
+
+	 // ショートカット
+// HTML要素の取得
+const shortcutsContainer = document.getElementById('shortcuts-container');
+const addShortcutButton = document.getElementById('add-shortcut');
+const modal = document.getElementById('modal');
+const modalName = document.getElementById('shortcut-name');
+const modalUrl = document.getElementById('shortcut-url');
+const imagePreview = document.getElementById('image-preview');
+const saveButton = document.getElementById('save-shortcut');
+const deleteButton = document.getElementById('delete-shortcut');
+const cancelButton = document.getElementById('cancel-shortcut');
+const closeButton = document.querySelector('.close-button');
+
+// ローカルストレージからショートカット情報を取得、または空の配列で初期化
+let shortcuts = JSON.parse(localStorage.getItem('shortcuts')) || [];
+
+// ショートカット情報を表示する関数
+function renderShortcuts() {
+    shortcutsContainer.innerHTML = '';
+    shortcuts.forEach(shortcut => {
+        const shortcutDiv = document.createElement('div');
+        shortcutDiv.classList.add('shortcut');
+
+        // ファビコンのURLを生成
+        const faviconUrl = `https://www.google.com/s2/favicons?domain=${new URL(shortcut.url).hostname}`;
+
+        shortcutDiv.innerHTML = `
+            <img src="${faviconUrl}">
+            <span>${shortcut.name}</span>
+        `;
+        shortcutsContainer.appendChild(shortcutDiv);
+    });
+}
+
+// モーダルを開く関数 (編集時と追加時で処理を分ける)
+function openModal(shortcut) {
+    modal.style.display = 'block';
+    if (shortcut) { // 編集の場合
+        editingShortcut = shortcut;
+        modalName.value = shortcut.name;
+        modalUrl.value = shortcut.url;
+
+        // 編集時のプレビュー表示
+        const faviconUrl = `https://www.google.com/s2/favicons?domain=${new URL(shortcut.url).hostname}`;
+        imagePreview.innerHTML = `<img src="${faviconUrl}">`;
+
+        deleteButton.style.display = 'block';
+    } else { // 追加の場合
+        editingShortcut = null;
+        modalName.value = '';
+        modalUrl.value = '';
+        imagePreview.innerHTML = '';
+        deleteButton.style.display = 'none';
+    }
+}
+
+// モーダルを閉じる関数
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+// URL 入力欄の処理 (https:// を自動付与)
+modalUrl.addEventListener('input', () => {
+    let url = modalUrl.value;
+    if (!url.startsWith('https://')) {
+        url = 'https://' + url;
+        modalUrl.value = url;
+    }
+});
+
+// 保存ボタンの処理
+saveButton.addEventListener('click', () => {
+    const name = modalName.value;
+    const url = modalUrl.value;
+
+    if (name && url) {
+        saveShortcut(name, url);
+    }
+});
+
+function saveShortcut(name, url) {
+    if (editingShortcut) {
+        editingShortcut.name = name;
+        editingShortcut.url = url;
+    } else {
+        shortcuts.push({ name, url });
+    }
+
+    localStorage.setItem('shortcuts', JSON.stringify(shortcuts));
+    renderShortcuts();
+    closeModal();
+}
+
+// 削除ボタンの処理
+deleteButton.addEventListener('click', () => {
+    if (editingShortcut) {
+        shortcuts = shortcuts.filter(s => s !== editingShortcut);
+        localStorage.setItem('shortcuts', JSON.stringify(shortcuts));
+        renderShortcuts();
+        closeModal();
+    }
+});
+
+// 各ボタンのイベントリスナー
+addShortcutButton.addEventListener('click', () => openModal());
+closeButton.addEventListener('click', closeModal);
+cancelButton.addEventListener('click', closeModal);
+
+// ショートカット要素のクリック処理 (サイトへ移動、右クリックで編集)
+shortcutsContainer.addEventListener('click', (event) => {
+    const shortcutDiv = event.target.closest('.shortcut');
+    if (shortcutDiv) {
+        const index = Array.from(shortcutsContainer.children).indexOf(shortcutDiv);
+        const shortcut = shortcuts[index];
+
+        if (event.button === 0) { // 左クリック
+            window.open(shortcut.url, '_blank');
+        }
+    }
+});
+
+shortcutsContainer.addEventListener('contextmenu', (event) => {
+    const shortcutDiv = event.target.closest('.shortcut');
+    if (shortcutDiv) {
+        event.preventDefault(); // コンテキストメニューを無効化
+        const index = Array.from(shortcutsContainer.children).indexOf(shortcutDiv);
+        openModal(shortcuts[index]);
+    }
+});
+
+// 初期表示
+renderShortcuts();
 	</script>
