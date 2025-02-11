@@ -51,22 +51,34 @@
             <button id="cancel-shortcut">閉じる</button>
         </div>
     </div>
-</html>		<!-- ショートカット　--> 
-	<br>
-			<nav class="bottom-nav">
+</html>		<!-- メニューボタン　--> 
+	<div id="menu-button">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div id="menu">
   <ul>
-    <li><a href="about/">ABOUT</a></li>
+<h1>メニュー</h1>
     <li><a href="blog/">更新情報</a></li>
-    <li><a href="https://djug2864.github.io">開発者のページ</a></li>
+    <li><a href="about/">その他...</a></li>
+    <li><a href="/">開発者のページ</a></li>
   </ul>
-			</nav>
-<center><select name="select" id="lang-select" onChange="location.href=value;">
-  <option disabled selected>Language</option>
-  <option value="https://djug2864-github-io.translate.goog/start-page_new/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hto=wapp">English</option>
-  <option value="https://djug2864-github-io.translate.goog/start-page_new/?_x_tr_sl=auto&_x_tr_tl=zh-CN&_x_tr_hto=wapp">中国人</option>
-  <option value="https://djug2864-github-io.translate.goog/start-page_new/?_x_tr_sl=auto&_x_tr_tl=ko&_x_tr_hto=wapp">한국어</option>
-	</select><button id="lang-select" onclick="share()">このページを共有</button></center>
-</body>
+<hr>
+<div id="google_translate_element" class="translate-widget"></div>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'ja', includedLanguages: 'en,ko,zh-CN,zh-TW'}, 'google_translate_element');
+    }
+  </script>
+
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<br>
+<button id="lang-select" onclick="share()">このページを共有</button>
+</div>
+
 	<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 <!--Script-->
  <script>
@@ -216,4 +228,19 @@ shortcutsContainer.addEventListener('contextmenu', (event) => {
 
 // 初期表示
 renderShortcuts();
+
+	 // メニューボタン
+const menuButton = document.getElementById('menu-button');
+const menu = document.getElementById('menu');
+const overlay = document.getElementById('overlay');
+
+menuButton.addEventListener('click', () => {
+  menu.classList.toggle('active'); // メニューの表示/非表示を切り替え
+  overlay.style.display = menu.classList.contains('active') ? 'block' : 'none'; // オーバーレイの表示/非表示を切り替え
+});
+
+overlay.addEventListener('click', () => {
+    menu.classList.remove('active'); // メニューを非表示にする
+    overlay.style.display = 'none'; // オーバーレイを非表示にする
+});
 	</script>
