@@ -273,3 +273,12 @@ box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 影を追加 */
   display: inline-block;
   margin: 0 10px;
 }
+
+.modal-content input[type="text"] { /* タイトルとURLの入力欄に適用 */
+    padding: 10px; /* パディングを追加してタッチしやすくする */
+    border-radius: 20px; /* 左右を丸める */
+    margin-bottom: 10px; /* 下マージンを追加して間隔を空ける */
+    border: 1px solid #ccc; /* 薄いグレーの枠線を追加 */
+    box-sizing: border-box; /* 幅をpaddingとborderを含めて計算 */
+    width: calc(100% - 22px); /* 左右のpaddingとborder分を引く */
+}
