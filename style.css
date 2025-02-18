@@ -365,6 +365,43 @@ box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 影を追加 */
     z-index: 998; /* メニューより背面に表示 */
     display: none; /* 初期状態では非表示 */
 }
+/* ダークモード/ライトモード切り替え */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease; /* 背景色と文字色の変化を滑らかにする */
+}
+
+body.dark-mode {
+  background-color: #333; /* ダークモードの背景色 */
+  color: #eee; /* ダークモードの文字色 */
+}
+
+body.dark-mode #menu {
+  background-color: #444; /* ダークモードのメニュー背景色 */
+}
+
+body.dark-mode #menu a {
+  color: #ddd; /* ダークモードのメニュー文字色 */
+}
+
+body.dark-mode #menu ul li a {
+  border: 1px solid #666; /* ダークモードのメニュー枠線色 */
+}
+
+body.dark-mode #menu ul li a:hover {
+  background-color: #555; /* ダークモードのメニューホバー時背景色 */
+}
+
+body.dark-mode #menu ul li a:active {
+  background-color: #666; /* ダークモードのメニュークリック時背景色 */
+}
+
+/* メディアクエリ (例: 768px以下でメニューボタンの位置を変更) */
+@media (max-width: 768px) {
+  #menu-button {
+    bottom: 10px;
+    right: 10px;
+  }
+}
 #lang-select {
   padding: 10px 20px;
   border: 1px solid black;
