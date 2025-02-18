@@ -60,6 +60,10 @@
 
 <div id="menu">
   <ul>
+	  <div class="clock-container">
+    <div id="date"></div>
+    <div id="clock"></div>
+	  </div>
 <h1><font color="black">メニュー</h1>
     <li><a href="blog/">更新情報</a></li>
     <li><a href="about/">その他...</a></li>
@@ -243,4 +247,24 @@ overlay.addEventListener('click', () => {
     menu.classList.remove('active'); // メニューを非表示にする
     overlay.style.display = 'none'; // オーバーレイを非表示にする
 });
+
+	 //時計
+	 function updateClock() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+
+  const dateString = `${year}/${month}/${day}`;
+  const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+  document.getElementById('date').textContent = dateString;
+  document.getElementById('clock').textContent = timeString;
+}
+
+updateClock(); // 初回実行
+setInterval(updateClock, 1000); // 1秒ごとに更新
 	</script>
